@@ -16,8 +16,23 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 DEVICE_PACKAGE_OVERLAYS :=
 
-PRODUCT_PACKAGES +=
-PRODUCT_COPY_FILES +=
+PRODUCT_COPY_FILES += \
+    device/raspberrypi/modelb/fstab.modelb:root/fstab.modelb \
+    device/raspberrypi/modelb/init.bcm2708.rc:root/init.bcm2708.rc
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.carrier=wifi-only
+    hw.nobattery=true
+
+# Openssh
+PRODUCT_PACKAGES += \
+    scp \
+    sftp \
+    ssh \
+    sshd \
+    sshd_config \
+    ssh-keygen \
+    start-ssh
 
 PRODUCT_NAME := full_modelb
 PRODUCT_DEVICE := modelb

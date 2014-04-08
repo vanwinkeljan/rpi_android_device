@@ -1,0 +1,7 @@
+
+on fs
+  mount_all /fstab.modelb
+
+on boot
+  start sshd
+
