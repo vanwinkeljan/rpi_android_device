@@ -18,11 +18,20 @@ DEVICE_PACKAGE_OVERLAYS :=
 
 PRODUCT_COPY_FILES += \
     device/raspberrypi/modelb/fstab.modelb:root/fstab.modelb \
-    device/raspberrypi/modelb/init.bcm2708.rc:root/init.bcm2708.rc
+    device/raspberrypi/modelb/fstab.modelb:root/fstab.bcm2708 \
+    device/raspberrypi/modelb/init.bcm2708.rc:root/init.bcm2708.rc \
+
+#NFS mounts
+PRODUCT_COPY_FILES += \
+    device/raspberrypi/modelb/mount-nfs:/system/bin/mount-nfs \
+    device/raspberrypi/modelb/nfsmounted:/cache/nfsmounted \
+    device/raspberrypi/modelb/nfsmounted:/data/nfsmounted \
+    
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=wifi-only
-    hw.nobattery=true
+    ro.carrier=wifi-only \
+    hw.nobattery=true \
+    
 
 # Openssh
 PRODUCT_PACKAGES += \
@@ -33,6 +42,21 @@ PRODUCT_PACKAGES += \
     sshd_config \
     ssh-keygen \
     start-ssh
+
+
+PRODUCT_COPY_FILES += \
+   device/raspberrypi/modelb/ssh_dev_id_rsa.pub:/system/etc/security/authorized_keys.default
+
+#OpenGL ES
+PRODUCT_PACKAGES += \
+    gralloc.$(TARGET_BOARD_PLATFORM) \
+    hwcomposer.$(TARGET_BOARD_PLATFORM) \
+    libv3d \
+    libGLES_$(TARGET_BOARD_PLATFORM)
+    
+PRODUCT_COPY_FILES += \
+    device/raspberrypi/modelb/egl.cfg:system/lib/egl/egl.cfg \
+    
 
 PRODUCT_NAME := full_modelb
 PRODUCT_DEVICE := modelb

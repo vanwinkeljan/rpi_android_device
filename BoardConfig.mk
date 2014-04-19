@@ -28,6 +28,7 @@ TARGET_CPU_ABI := armeabi
 TARGET_CPU_VARIANT := arm11
 TARGET_ARCH_VARIANT_CPU := arm1176jzf-s
 ARCH_ARM_HAVE_TLS_REGISTER := false
+TARGET_BOARD_PLATFORM := rpi_modelb
 
 TARGET_KERNEL_CONFIG := bcmrpi_android_defconfig
 

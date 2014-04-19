@@ -1,0 +1,5 @@
+#!/system/bin/sh
+
+busybox mount -o nolock,rw,hard,intr,vers=3 -t nfs 192.168.1.5:/srv/nfs/rpi/android/data /data
+busybox mount -o nolock,rw,hard,intr,vers=3 -t nfs 192.168.1.5:/srv/nfs/rpi/android/cache /cache
+

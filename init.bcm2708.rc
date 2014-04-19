@@ -1,7 +1,18 @@
 
 on fs
-  mount_all /fstab.modelb
+  start mount-nfs
+  wait /data/nfsmounted
+  wait /cache/nfsmounted
+
+on post-fs-data
+  setprop vold.post_fs_data_done 1
 
 on boot
+  mkdir /data/ssh
   start sshd
+  start console
 
+service mount-nfs /system/bin/mount-nfs
+  class main
+  disabled
+  oneshot
