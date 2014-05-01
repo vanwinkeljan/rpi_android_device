@@ -31,6 +31,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=wifi-only \
     hw.nobattery=true \
+    ro.config.low_ram=true \
     
 
 # Openssh
